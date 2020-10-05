@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/note.dart';
 
 class NoteList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('NoteApp'),
-        ),
-        body: ListView.builder(itemBuilder: (context, index) {
-          return Card(
+      appBar: AppBar(
+        title: Text('NoteApp'),
+      ),
+      body: ListView.builder(itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Note(NoteMode.Edditing)));
+          },
+          child: Card(
             child: Padding(
               padding: const EdgeInsets.only(
                   top: 30, bottom: 30, left: 13, right: 22),
@@ -28,11 +34,16 @@ class NoteList extends StatelessWidget {
                 ],
               ),
             ),
-          );
-        }),
-        floatingActionButton: FloatingActionButton(
-          onPressed: (){},
-          child: Icon(Icons.add),),
+          ),
         );
+      }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Note(NoteMode.Adding)));
+        },
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
