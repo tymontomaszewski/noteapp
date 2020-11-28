@@ -24,7 +24,7 @@ class NoteListState extends State<NoteList> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => Note(NoteMode.Edditing)));
+                    builder: (context) => Note(NoteMode.Edditing, index)));
           },
           child: Card(
             child: Padding(
@@ -46,8 +46,10 @@ class NoteListState extends State<NoteList> {
       }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => Note(NoteMode.Adding)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Note(NoteMode.Adding, null)));
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.orangeAccent,
